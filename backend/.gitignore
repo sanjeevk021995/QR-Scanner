@@ -1,0 +1,22 @@
+# Django-related
+*.pyc
+*.pyo
+__pycache__
+*.DS_Store
+# Ignore SQLite database file
+*.sqlite3
+
+# Ignore migrations directory
+ut_app/migrations
+migrations
+# Ignore local settings file
+ut_bot/settings.py
+
+# Ignore static files
+/staticfiles/
+
+# Ignore media files
+log
+/log
+/env/
+.env
