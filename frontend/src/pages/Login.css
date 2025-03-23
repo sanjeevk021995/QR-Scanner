@@ -1,0 +1,84 @@
+/* Login.css */
+
+.login-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-size: cover; /* Cover the entire container */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the image */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Add a semi-transparent black overlay for better text readability */
+  color: white; /* sets text color to white */
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sign-in-button,
+.sign-up-button,
+.forgot-password-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sign-in-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.sign-up-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.forgot-password-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+.input-group label,
+.forgot-password-button {
+  color: white;
+}

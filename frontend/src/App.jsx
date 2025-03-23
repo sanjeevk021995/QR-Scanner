@@ -9,6 +9,7 @@ import About from "./pages/AboutUs";
 import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/signin" element={<Login />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
