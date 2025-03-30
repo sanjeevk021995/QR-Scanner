@@ -1,89 +1,44 @@
-import React, { useState } from "react";
-import "./Login.css";
 
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
-  const validateForm = () => {
-    let isValid = true;
-    setUsernameError("");
-    setPasswordError("");
+import React, { useState, useContext } from 'react';
+import { loginUser } from '../api/auth';
+import AuthContext from '../context/AuthContext';
 
-    if (!username.trim()) {
-      setUsernameError("Username is required");
-      isValid = false;
-    }
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { login } = useContext(AuthContext);
 
-    if (!password.trim()) {
-      setPasswordError("Password is required");
-      isValid = false;
-    } else if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters");
-      isValid = false;
-    }
+    const handleLogin = async (e) => {
+      console.log("email",email)
+      console.log("password",password)
+        e.preventDefault();
+        try {
+            const data = await loginUser(email, password);
+            login(data);
+            console.log("login data",data)
+            alert(data)
+            // Redirect based on user type
+            // if (data.user_type === 'master_admin') {
+            //     window.location.href = '/master-admin-dashboard';
+            // } else if (data.user_type === 'staff') {
+            //     window.location.href = '/staff-dashboard';
+            // } else {
+            //     window.location.href = '/user-dashboard';
+            // }
+            window.location.href = '/staff-dashboard';
+        } catch (err) {
+            console.error('Login failed', err);
+        }
+    };
 
-    return isValid;
-  };
-
-  const handleSignIn = () => {
-    if (validateForm()) {
-      // Implement your sign-in logic here
-      console.log("Signing in with:", username, password);
-      // Example: Check credentials against a database or API
-    }
-  };
-
-  const handleSignUp = () => {
-    navigate("/register"); // Redirect to the signup page
-  };
-
-  const handleForgotPassword = () => {
-    // Implement forgot password logic
-    console.log("Forgot Password clicked");
-    // Example: Redirect to a password reset page
-  };
-
-  return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <div className="input-group">
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {usernameError && <p className="error-message">{usernameError}</p>}
-      </div>
-      <div className="input-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {passwordError && <p className="error-message">{passwordError}</p>}
-      </div>
-      <div className="button-group">
-        <button className="sign-in-button" onClick={handleSignIn}>
-          Sign In
-        </button>
-        <button className="sign-up-button" onClick={handleSignUp}>
-          Sign Up
-        </button>
-      </div>
-      <button className="forgot-password-button" onClick={handleForgotPassword}>
-        Forgot Password?
-      </button>
-    </div>
-  );
-}
+    return (
+        <form onSubmit={handleLogin}>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <button type="submit">Login</button>
+        </form>
+    );
+};
 
 export default Login;

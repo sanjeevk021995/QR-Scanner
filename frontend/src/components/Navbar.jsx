@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/logo.png"; // Replace with your actual logo path
+import AuthContext from '../context/AuthContext';
+
 
 function Navbar() {
+  const { token } = useContext(AuthContext);
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -23,6 +26,21 @@ function Navbar() {
           <li>
             <Link to="/contactus">Contact Us</Link>
           </li>
+          {/* Conditionally show Profile link if the user is logged in */}
+          {token ? (
+                    <>
+                        <li>
+                            <Link to="/profile">Profile</Link>
+                        </li>
+                        <li>
+                            <button >Logout</button>
+                        </li>
+                    </>
+                ) : (
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                )}
           <li>
             <Link to="/about">About</Link>
           </li>
