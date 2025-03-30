@@ -10,6 +10,7 @@ import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
+import HealthcareDashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signin" element={<Login />} />
+        {/* <Route path="/dashboard" element={<HealthcareDashboard />} /> */}
       </Routes>
       {/* <Footer /> */}
     </Router>

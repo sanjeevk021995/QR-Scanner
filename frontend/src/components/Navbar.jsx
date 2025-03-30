@@ -29,9 +29,9 @@ function Navbar() {
           <li>
             <Link to="/signin">Sign In</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/register">Sign Up</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
