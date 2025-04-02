@@ -1,79 +1,102 @@
-.profile-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+.container {
   padding: 20px;
-  background-color: #f5f4f4;
-  margin-top: 50px; /* Added to prevent overlap with navbar */
+  max-width: 900px;
+  margin: auto;
 }
 
-.profile-card,
-.details-card,
-.social-card,
-.progress-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+.main-breadcrumb {
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
 
-.profile-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto;
+.breadcrumb {
+  margin-bottom: 15px;
 }
 
-h2,
-h3 {
-  text-align: center;
-  color: #333;
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
 }
 
-.follow-btn,
-.message-btn,
-.edit-btn {
-  display: block;
+.card-body img {
+  border: 3px solid #ddd;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+input[type="text"],
+input[type="email"] {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+small.text-danger {
+  display: block;
+  margin-top: 5px;
+}
+
+/* Styling for the edit and save buttons */
+.edit-save-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-top: 10px;
+}
+
+.btn-edit {
+  background-color: #28a745;
+  color: white;
   border: none;
+  padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.follow-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.message-btn {
-  background-color: #6c757d;
-  color: white;
-}
-
-.edit-btn {
-  background-color: #ff9800;
-  color: white;
-  margin-top: 5px;
-}
-
-.progress-bar {
-  margin: 10px 0;
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background: #ddd;
+.btn-save {
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  padding: 8px 12px;
   border-radius: 5px;
-  overflow: hidden;
+  cursor: pointer;
 }
 
-.progress-fill {
-  height: 100%;
-  background: #007bff;
+/* QR code styling */
+.qr-code {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.qr-code img {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
 }

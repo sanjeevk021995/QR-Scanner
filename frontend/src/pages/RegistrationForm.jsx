@@ -95,7 +95,7 @@ function RegistrationForm() {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="registration-form">
-        <h2>Registration Form</h2>
+        <h2>Sign Up</h2>
 
         <label>Full Name</label>
         <input

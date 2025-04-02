@@ -1,180 +1,225 @@
 import React, { useState } from "react";
+import QRCodeSettings from "../components/QRCodeSettings";
 import "./Profile.css";
 
 const Profile = () => {
-  const [editMode, setEditMode] = useState({
-    profile: false,
-    details: false,
-    social: false,
-    progress: false,
-  });
+  const [name, setName] = useState("John Doe");
+  const [email, setEmail] = useState("fip@jukmuh.al");
+  const [phone, setPhone] = useState("(239) 816-9029");
+  const [address, setAddress] = useState("Bay Area, San Francisco, CA");
 
-  const [userData, setUserData] = useState({
-    fullName: "John Doe",
-    jobTitle: "Full Stack Developer",
-    location: "Bay Area, San Francisco, CA",
-    email: "fip@jukmuh.al",
-    phone: "(239) 816-9029",
-    mobile: "(320) 380-4539",
-    address: "Bay Area, San Francisco, CA",
-    website: "https://bootdey.com",
-    github: "bootdey",
-    twitter: "@bootdey",
-    instagram: "bootdey",
-    facebook: "bootdey",
-    progress: {
-      "Web Design": 80,
-      "Website Markup": 70,
-      "One Page": 60,
-      "Mobile Template": 50,
-      "Backend API": 90,
-    },
-  });
+  const [height, setHeight] = useState("5'9\" (175 cm)");
+  const [weight, setWeight] = useState("70 kg");
+  const [bloodType, setBloodType] = useState("O+");
+  const [allergies, setAllergies] = useState("None");
 
-  const toggleEdit = (section) => {
-    setEditMode((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [isEditingHealth, setIsEditingHealth] = useState(false);
 
-  const handleChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+  const toggleEditProfile = () => setIsEditingProfile(!isEditingProfile);
+  const toggleEditHealth = () => setIsEditingHealth(!isEditingHealth);
+
+  // Collect all data
+  const userData = {
+    name,
+    email,
+    phone,
+    address,
+    height,
+    weight,
+    bloodType,
+    allergies,
   };
 
   return (
-    <div className="profile-container">
-      {/* Profile Card */}
-      <div className="profile-card">
-        <img src="/profile-pic.png" alt="Profile" className="profile-img" />
-        {editMode.profile ? (
-          <input
-            type="text"
-            name="fullName"
-            value={userData.fullName}
-            onChange={handleChange}
-          />
-        ) : (
-          <h2>{userData.fullName}</h2>
-        )}
-        <p>{userData.jobTitle}</p>
-        <p>{userData.location}</p>
-        <button className="follow-btn">Follow</button>
-        <button className="message-btn">Message</button>
-        <button className="edit-btn" onClick={() => toggleEdit("profile")}>
-          {editMode.profile ? "Save" : "Edit"}
-        </button>
-      </div>
+    <div className="container">
+      <h2 className="user-profile-heading">User Profile</h2>
 
-      {/* Details Card */}
-      <div className="details-card">
-        <h3>
-          User Details
-          <button className="edit-btn" onClick={() => toggleEdit("details")}>
-            {editMode.details ? "Save" : "Edit"}
-          </button>
-        </h3>
-        <p>
-          <strong>Email:</strong>{" "}
-          {editMode.details ? (
-            <input
-              type="text"
-              name="email"
-              value={userData.email}
-              onChange={handleChange}
-            />
-          ) : (
-            userData.email
-          )}
-        </p>
-        <p>
-          <strong>Phone:</strong>{" "}
-          {editMode.details ? (
-            <input
-              type="text"
-              name="phone"
-              value={userData.phone}
-              onChange={handleChange}
-            />
-          ) : (
-            userData.phone
-          )}
-        </p>
-        <p>
-          <strong>Mobile:</strong>{" "}
-          {editMode.details ? (
-            <input
-              type="text"
-              name="mobile"
-              value={userData.mobile}
-              onChange={handleChange}
-            />
-          ) : (
-            userData.mobile
-          )}
-        </p>
-        <p>
-          <strong>Address:</strong>{" "}
-          {editMode.details ? (
-            <input
-              type="text"
-              name="address"
-              value={userData.address}
-              onChange={handleChange}
-            />
-          ) : (
-            userData.address
-          )}
-        </p>
-      </div>
-
-      {/* Social Links Card */}
-      <div className="social-card">
-        <h3>
-          Social Links
-          <button className="edit-btn" onClick={() => toggleEdit("social")}>
-            {editMode.social ? "Save" : "Edit"}
-          </button>
-        </h3>
-        {Object.entries(userData)
-          .filter(([key]) =>
-            ["website", "github", "twitter", "instagram", "facebook"].includes(
-              key
-            )
-          )
-          .map(([key, value]) => (
-            <p key={key}>
-              <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>{" "}
-              {editMode.social ? (
-                <input
-                  type="text"
-                  name={key}
-                  value={value}
-                  onChange={handleChange}
-                />
-              ) : (
-                value
-              )}
-            </p>
-          ))}
-      </div>
-
-      {/* Progress Status Card */}
-      <div className="progress-card">
-        <h3>
-          Project Status
-          <button className="edit-btn" onClick={() => toggleEdit("progress")}>
-            {editMode.progress ? "Save" : "Edit"}
-          </button>
-        </h3>
-        {Object.entries(userData.progress).map(([task, progress]) => (
-          <div key={task} className="progress-bar">
-            <p>{task}</p>
-            <div className="progress">
-              <div
-                className="progress-fill"
-                style={{ width: `${progress}%` }}
-              ></div>
+      <div className="row gutters-sm">
+        <div className="col-md-4 mb-3">
+          <div className="card">
+            <div className="card-body text-center">
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                alt="User"
+                className="rounded-circle"
+                width="150"
+              />
+              <h4>{name}</h4>
             </div>
           </div>
-        ))}
+
+          {/* QR Code Settings Component */}
+          <QRCodeSettings userData={userData} />
+        </div>
+
+        <div className="col-md-8">
+          {/* Personal Information Card */}
+          <div className="card mb-3">
+            <div className="card-header d-flex justify-content-between">
+              <h5>Personal Information</h5>
+              <button className="btn-edit" onClick={toggleEditProfile}>
+                {isEditingProfile ? "Save" : "Edit"}
+              </button>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Full Name</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingProfile ? (
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    name
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Email</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingProfile ? (
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    email
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Phone</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingProfile ? (
+                    <input
+                      type="text"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    phone
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Address</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingProfile ? (
+                    <input
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    address
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Basic Health Data Card */}
+          <div className="card mb-3">
+            <div className="card-header d-flex justify-content-between">
+              <h5>Basic Health Data</h5>
+              <button className="btn-edit" onClick={toggleEditHealth}>
+                {isEditingHealth ? "Save" : "Edit"}
+              </button>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Height</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingHealth ? (
+                    <input
+                      type="text"
+                      value={height}
+                      onChange={(e) => setHeight(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    height
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Weight</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingHealth ? (
+                    <input
+                      type="text"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    weight
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Blood Type</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingHealth ? (
+                    <input
+                      type="text"
+                      value={bloodType}
+                      onChange={(e) => setBloodType(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    bloodType
+                  )}
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Allergies</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {isEditingHealth ? (
+                    <input
+                      type="text"
+                      value={allergies}
+                      onChange={(e) => setAllergies(e.target.value)}
+                      className="form-control"
+                    />
+                  ) : (
+                    allergies
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
