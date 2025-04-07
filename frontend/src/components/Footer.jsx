@@ -1,58 +1,64 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-section">
+    <div className="footer-container">
+      <div className="footer-content">
+        <div className="footer-column">
           <h3>About Us</h3>
-          <p>
-            We provide seamless profile management solutions. Stay connected
-            with us for updates and new features.
-          </p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Quick Links</h3>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="#about">Our Story</a>
             </li>
             <li>
-              <a href="/profile">Profile</a>
+              <a href="#mission">Our Mission</a>
             </li>
             <li>
-              <a href="/registration">Register</a>
+              <a href="#vision">Our Vision</a>
             </li>
           </ul>
         </div>
-
-        <div className="footer-section">
-          <h3>Follow Us</h3>
-          <div className="social-icons">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
+        <div className="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#contact">Contact Us</a>
+            </li>
+            <li>
+              <a href="#generate">Generate QR Code</a>
+            </li>
+          </ul>
         </div>
-
-        <div className="footer-section">
-          <h3>Contact</h3>
-          <p>Email: support@example.com</p>
-          <p>Phone: +123 456 7890</p>
+        <div className="footer-column">
+          <h3>Stay Connected</h3>
+          <ul>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <div className="footer-bottom">
-        <p>© 2025 Profile Generator. All rights reserved.</p>
+      <hr className="footer-hr" />
+      <div className="copyright">
+        <p>&copy; 2025 SafeConnect. All Rights Reserved.</p>
       </div>
-    </footer>
+    </div>
   );
 };
 

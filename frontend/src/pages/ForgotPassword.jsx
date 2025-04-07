@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { forgotPassword } from "../api/auth"; // Import API function
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -34,26 +34,28 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Forgot Password</h2>
-      <form onSubmit={handleForgotPassword}>
-        <div className="input-group">
-          <label htmlFor="email">Enter your email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {emailError && <p className="error-message">{emailError}</p>}
-        </div>
+    <div className="container-forgotPassword">
+      <div className="login-container">
+        <h2>Forgot Password</h2>
+        <form onSubmit={handleForgotPassword}>
+          <div className="input-group">
+            <label htmlFor="email">Enter your email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {emailError && <p className="error-message">{emailError}</p>}
+          </div>
 
-        <button type="submit" className="sign-in-button">
-          Send Reset Link
-        </button>
-      </form>
+          <button type="submit" className="sign-in-button">
+            Send Reset Link
+          </button>
+        </form>
 
-      {message && <p className="success-message">{message}</p>}
+        {message && <p className="success-message">{message}</p>}
+      </div>
     </div>
   );
 };

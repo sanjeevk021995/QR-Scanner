@@ -4,12 +4,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: seagreen;
+  background: #a079ee;
   padding: 10px 40px; /* Increased padding for better spacing */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
-
+.navlink-container {
+  margin-left: 50px;
+}
 /* Flex container for logo and links */
 .navbar-container {
   display: flex;
@@ -19,7 +21,10 @@
 
 /* Logo Styling */
 .logo img {
-  height: 50px;
+  height: 45px;
+  padding: 2px;
+  width: 150px;
+  margin-bottom: 2px;
 }
 
 /* Navigation Links */

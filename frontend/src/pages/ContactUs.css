@@ -1,3 +1,24 @@
+.main-container {
+  margin-top: 70px;
+}
+.git {
+  background-color: #864ef2;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s;
+  margin: 5px;
+  text-align: center;
+  color: #fff;
+}
+.contact-info {
+  margin-top: 80px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s;
+}
 .uf-contact-form-01 {
   max-width: 900px;
 }
@@ -15,11 +36,11 @@
 .uf-ct-01-text-primary {
   color: #864ef2;
 }
-.uf-ct-01-btn-primary {
+.send-message {
   background-color: #864ef2;
   color: #fff;
 }
-.uf-ct-01-btn-primary:hover {
+.send-message:hover {
   background-color: #641eec;
   color: #fff;
 }

@@ -1,9 +1,16 @@
-.container {
+.container-profile {
   padding: 20px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
+  margin-top: 20px;
+  margin-left: auto;
 }
-
+.user-profile-heading {
+  text-align: center; /* Centers the text horizontally */
+  margin-top: 80px; /* Ensures there's no extra margin at the top */
+  padding-top: 20px; /* Adds spacing from the top */
+  font-size: 2rem; /* Adjust font size as needed */
+}
 .main-breadcrumb {
   background: #f8f9fa;
   padding: 10px 15px;
@@ -19,10 +26,12 @@
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  width: 100%;
 }
 
 .card-body img {
   border: 3px solid #ddd;
+  width: 50px;
 }
 
 .text-secondary {
@@ -99,4 +108,24 @@ small.text-danger {
   height: 120px;
   border: 2px solid #ddd;
   border-radius: 10px;
+}
+.col-md-4,
+.col-md-8 {
+  flex: 1; /* Make each column take up equal width initially */
+  min-width: 300px; /* Prevent columns from shrinking too small */
+}
+
+.col-md-4 {
+  max-width: 400px; /* Set a max width for the smaller column */
+}
+
+.col-md-8 {
+  max-width: calc(
+    100% - 400px
+  ); /* Adjust width dynamically for the larger column */
+}
+.row.gutters-sm {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 15px; /* Add space between items */
 }

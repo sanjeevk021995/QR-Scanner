@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../assets/logo.png"; // Replace with your actual logo path
+import logo from "../assets/safeconnect1.png"; // Replace with your actual logo path
 import AuthContext from "../context/AuthContext";
 
 function Navbar() {
-  const { token } = useContext(AuthContext);
+  const { token, logout } = useContext(AuthContext);
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -14,40 +15,39 @@ function Navbar() {
           <img src={logo} alt="Logo" />
         </div>
 
-        {/* Navigation Links */}
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/services">Services</Link>
-          </li>
-          <li>
-            <Link to="/contactus">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          {/* Conditionally show Profile link if the user is logged in */}
-          {token ? (
-            <>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <button>Logout</button>
-              </li>
-            </>
-          ) : (
+        <div className="navlink-container">
+          {/* Navigation Links */}
+          <ul className="nav-links">
             <li>
-              <Link to="/login">Sign In</Link>
+              <Link to="/">Home</Link>
             </li>
-          )}
-
-          {/* <li>
-            <Link to="/register">Sign Up</Link>
-          </li> */}
-        </ul>
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/contactus">Contact Us</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            {token ? (
+              <>
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li>
+                  <Link to="/login" onClick={logout}>
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/login">Sign In</Link>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </nav>
   );

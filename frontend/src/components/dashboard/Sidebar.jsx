@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import Navbar from "../Navbar";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login", { replace: true });
+  };
 
   return (
     <>
@@ -18,11 +28,6 @@ function Sidebar() {
         <hr />
         <ul className="sidebar-nav">
           <li>
-            <a href="#" className="active">
-              {collapsed ? "🏠" : "Home"}
-            </a>
-          </li>
-          <li>
             <a href="#">{collapsed ? "📊" : "Profile"}</a>
           </li>
           <li>
@@ -36,30 +41,11 @@ function Sidebar() {
           </li>
         </ul>
         <hr />
-        <div className="user-dropdown">
-          <a href="#" className="dropdown-toggle">
-            <img
-              src="https://github.com/mdo.png"
-              alt="User"
-              className="user-img"
-            />
-            {!collapsed && <strong>mdo</strong>}
-          </a>
-          <ul className="dropdown-menu">
-            <li>
-              <a href="#">Profile</a>
-            </li>
-            <li>
-              <a href="#">Settings</a>
-            </li>
-            <li>
-              <hr />
-            </li>
-            <li>
-              <a href="#">Sign out</a>
-            </li>
-          </ul>
-        </div>
+
+        {/* Logout Button at the Bottom */}
+        <button className="logout-btn" onClick={handleLogout}>
+          {collapsed ? "🚪" : "Logout"}
+        </button>
       </div>
     </>
   );
